@@ -23,6 +23,15 @@ public class ArrayStorage {
     }
 
     void delete(String uuid) {
+        int index = getIndex(uuid);
+        if (index == -1) {
+            System.out.println("No item for delete");
+        } else {
+            for (int i = index; i < size - 1; i++) {
+                storage[i] = storage[i + 1];
+            }
+        }
+        size--;
     }
 
     /**
