@@ -19,7 +19,12 @@ public class ArrayStorage {
     }
 
     Resume get(String uuid) {
-        return null;
+        int index = getIndex(uuid);
+        if (index == -1) {
+            return null;
+        } else {
+            return storage[index];
+        }
     }
 
     void delete(String uuid) {
