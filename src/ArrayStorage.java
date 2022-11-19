@@ -37,9 +37,8 @@ public class ArrayStorage {
         if (index == -1) {
             System.out.println("No item for delete");
         } else {
-            for (int i = index; i < size - 1; i++) {
-                storage[i] = storage[i + 1];
-            }
+            storage[index] = storage[size - 1];
+            size--;
         }
         size--;
     }
