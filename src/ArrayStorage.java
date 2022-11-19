@@ -53,7 +53,7 @@ public class ArrayStorage {
     /**
      * @return the index of the element or -1 if the element does not exist
      */
-    public int getIndex(String uuid) {
+    private int getIndex(String uuid) {
         for (int i = 0; i < size; i++) {
             if (Objects.equals(storage[i].uuid, uuid)) {
                 return i;
