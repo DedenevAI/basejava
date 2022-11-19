@@ -16,9 +16,6 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
-        if (size >= storage.length) {
-            storage = Arrays.copyOf(storage, storage.length * 2);
-        }
         storage[size] = r;
         size++;
     }
