@@ -1,5 +1,7 @@
 package com.uraise.webapp.storage;
 
+import com.uraise.webapp.model.Resume;
+
 import java.util.Arrays;
 import java.util.Objects;
 
