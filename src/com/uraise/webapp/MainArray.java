@@ -1,9 +1,14 @@
+package com.uraise.webapp;
+
+import com.uraise.webapp.model.Resume;
+import com.uraise.webapp.storage.ArrayStorage;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Interactive test for ArrayStorage implementation
+ * Interactive test for com.uraise.webapp.storage.ArrayStorage implementation
  * (just run, no need to understand)
  */
 public class MainArray {

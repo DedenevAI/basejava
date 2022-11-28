@@ -1,3 +1,5 @@
+package com.uraise.webapp.storage;
+
 import java.util.Arrays;
 import java.util.Objects;
 
