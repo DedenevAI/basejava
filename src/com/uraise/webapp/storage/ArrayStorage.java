@@ -36,7 +36,7 @@ public class ArrayStorage {
     public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index == -1) {
-            System.out.println("No item for delete");
+            System.out.println("ERROR: No item for delete");
         } else {
             storage[index] = storage[size - 1];
             size--;
