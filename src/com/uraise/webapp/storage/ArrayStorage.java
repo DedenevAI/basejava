@@ -35,7 +35,7 @@ public class ArrayStorage {
     public void update(Resume r) {
         int index = getIndex(r.getUuid());
         if (index == -1) {
-            System.out.println("ERROR: Resume " + r.getUuid() + " not exit in storage");
+            System.out.println("ERROR: Resume " + r.getUuid() + " isn't exit in storage");
         } else {
             storage[index] = r;
             System.out.println("Update " + r + " completed");
