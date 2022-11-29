@@ -20,24 +20,27 @@ public class ArrayStorage {
     }
 
     public void save(Resume r) {
-        Resume[] array = getAll();
-        for(Resume resume : array){
-            if(resume.getUuid().equals(r.getUuid())){
-                System.out.println("ERROR: Resume " + r.getUuid() + " is already in storage");
-                return;
-            }
+        int index = getIndex(r.getUuid());
+        if (index != -1) {
+            System.out.println("ERROR: Resume " + r.getUuid() + " is already in storage");
+            return;
         }
-        if (storage.length == size){
+        if (storage.length == size) {
             System.out.println("ERROR: Storage is full");
-        }else{
+        } else {
             storage[size] = r;
             size++;
         }
 
     }
 
-    public void update(Resume resume){
-
+    public void update(Resume r) {
+        int index = getIndex(r.getUuid());
+        if (index == -1) {
+            System.out.println("ERROR: Resume " + r.getUuid() + " not exit in storage");
+        } else {
+            storage[index] = r;
+        }
     }
 
     public Resume get(String uuid) {
