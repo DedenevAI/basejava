@@ -9,10 +9,10 @@ import java.util.Objects;
  * Array based storage for Resumes
  */
 public class ArrayStorage {
-    Resume[] storage = new Resume[10000];
+    private Resume[] storage = new Resume[10000];
     private int size;
 
-    void clear() {
+    public void clear() {
         for (int i = 0; i < size; i++) {
             storage[i] = null;
         }
@@ -24,12 +24,16 @@ public class ArrayStorage {
         size++;
     }
 
-    Resume get(String uuid) {
+    public void update(Resume resume){
+
+    }
+
+    public Resume get(String uuid) {
         int index = getIndex(uuid);
         return index == -1 ? null : storage[index];
     }
 
-    void delete(String uuid) {
+    public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index == -1) {
             System.out.println("No item for delete");
@@ -42,11 +46,11 @@ public class ArrayStorage {
     /**
      * @return array, contains only Resumes in storage (without null)
      */
-    Resume[] getAll() {
+    public Resume[] getAll() {
         return Arrays.copyOf(storage, size);
     }
 
-    int size() {
+    public int size() {
         return size;
     }
 
