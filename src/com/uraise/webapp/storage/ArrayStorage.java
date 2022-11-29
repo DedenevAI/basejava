@@ -40,6 +40,7 @@ public class ArrayStorage {
             System.out.println("ERROR: Resume " + r.getUuid() + " not exit in storage");
         } else {
             storage[index] = r;
+            System.out.println("Update " + r + " completed");
         }
     }
 
