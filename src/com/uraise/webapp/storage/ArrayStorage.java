@@ -55,6 +55,7 @@ public class ArrayStorage {
             System.out.println("ERROR: No item for delete");
         } else {
             storage[index] = storage[size - 1];
+            storage[size - 1] = null;
             size--;
         }
     }
