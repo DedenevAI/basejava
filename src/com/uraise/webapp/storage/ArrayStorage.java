@@ -20,12 +20,10 @@ public class ArrayStorage {
 
     public void save(Resume r) {
         int index = getIndex(r.getUuid());
-        if (index != -1) {
-            System.out.println("ERROR: Resume " + r.getUuid() + " is already in storage");
-            return;
-        }
         if (storage.length == size) {
             System.out.println("ERROR: Storage is full");
+        } else if (index != -1) {
+            System.out.println("ERROR: Resume " + r.getUuid() + " is already in storage");
         } else {
             storage[size] = r;
             size++;
