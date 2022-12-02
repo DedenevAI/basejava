@@ -43,7 +43,10 @@ public class ArrayStorage {
 
     public Resume get(String uuid) {
         int index = getIndex(uuid);
-        return index == -1 ? null : storage[index];
+        if (index == -1){
+            System.out.println("ERROR: No such item in the storage");
+            return null;
+        }else return storage[index];
     }
 
     public void delete(String uuid) {
