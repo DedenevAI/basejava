@@ -28,7 +28,6 @@ public class ArrayStorage {
             storage[size] = r;
             size++;
         }
-
     }
 
     public void update(Resume r) {
@@ -43,10 +42,12 @@ public class ArrayStorage {
 
     public Resume get(String uuid) {
         int index = getIndex(uuid);
-        if (index == -1){
+        if (index == -1) {
             System.out.println("ERROR: No such item in the storage");
             return null;
-        }else return storage[index];
+        } else {
+            return storage[index];
+        }
     }
 
     public void delete(String uuid) {
