@@ -14,7 +14,7 @@ public class ArrayStorage extends AbstractArrayStorage {
     }
 
     @Override
-    protected void deleteTemplate(String uuid, int index) {
+    protected void deleteTemplate(int index) {
         storage[index] = storage[size - 1];
     }
 
