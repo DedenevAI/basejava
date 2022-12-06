@@ -16,10 +16,11 @@ public abstract class AbstractArrayStorage implements Storage {
         } else if (index != -1) {
             System.out.println("ERROR: Resume " + r.getUuid() + " is already in storage");
         } else {
-            storage[size] = r;
+            saveTemplate(r, index);
             size++;
         }
     }
+
 
     public void update(Resume r) {
         int index = getIndex(r.getUuid());
@@ -36,11 +37,12 @@ public abstract class AbstractArrayStorage implements Storage {
         if (index == -1) {
             System.out.println("ERROR: No item for delete");
         } else {
-            storage[index] = storage[size - 1];
+            deleteTemplate(uuid, index);
             storage[size - 1] = null;
             size--;
         }
     }
+
 
     public Resume get(String uuid) {
         int index = getIndex(uuid);
@@ -69,4 +71,8 @@ public abstract class AbstractArrayStorage implements Storage {
     }
 
     protected abstract int getIndex(String uuid);
+
+    protected abstract void deleteTemplate(String uuid, int index);
+
+    protected abstract void saveTemplate(Resume r, int index);
 }
