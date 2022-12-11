@@ -1,5 +1,8 @@
 package com.uraise.webapp.storage;
 
+import com.uraise.webapp.exception.ExistStorageException;
+import com.uraise.webapp.exception.NotExistStorageException;
+import com.uraise.webapp.exception.StorageException;
 import com.uraise.webapp.model.Resume;
 
 import java.util.Arrays;
@@ -12,9 +15,9 @@ public abstract class AbstractArrayStorage implements Storage {
     public void save(Resume r) {
         int index = getIndex(r.getUuid());
         if (storage.length == size) {
-            System.out.println("ERROR: Storage is full");
+           throw new StorageException("ERROR: Storage overflow", r.getUuid()) ;
         } else if (index > 0) {
-            System.out.println("ERROR: Resume " + r.getUuid() + " is already in storage");
+            throw new ExistStorageException(r.getUuid());
         } else {
             saveResume(r, index);
             size++;
@@ -25,7 +28,7 @@ public abstract class AbstractArrayStorage implements Storage {
     public void update(Resume r) {
         int index = getIndex(r.getUuid());
         if (index < 0) {
-            System.out.println("ERROR: Resume " + r.getUuid() + " isn't exit in storage");
+            throw new NotExistStorageException(r.getUuid());
         } else {
             storage[index] = r;
             System.out.println("Update " + r + " completed");
@@ -47,8 +50,7 @@ public abstract class AbstractArrayStorage implements Storage {
     public Resume get(String uuid) {
         int index = getIndex(uuid);
         if (index < 0) {
-            System.out.println("ERROR: No such item in the storage");
-            return null;
+            throw new NotExistStorageException(uuid);
         } else {
             return storage[index];
         }
