@@ -25,7 +25,7 @@ public abstract class AbstractArrayStorageTest {
     public static final Resume RESUME_3 = new Resume(UUID_3);
 
     @Before
-    public void setUp(){
+    public void setUp() {
         storage.clear();
         storage.save(RESUME_1);
         storage.save(RESUME_2);
@@ -39,13 +39,14 @@ public abstract class AbstractArrayStorageTest {
     }
 
     @Test(expected = ExistStorageException.class)
-    public void whenObjectAlreadyInTheStorageThrowAnException(){
+    public void whenObjectAlreadyInTheStorageThrowAnException() {
         storage.save(RESUME_1);
     }
-    @Test(expected = StorageException .class)
-    public void whenStorageIsOverFlowThrowAnException(){
+
+    @Test(expected = StorageException.class)
+    public void whenStorageIsOverFlowThrowAnException() {
         try {
-            for (int i = 4; i <= STORAGE_LIMIT; i++){
+            for (int i = 4; i <= STORAGE_LIMIT; i++) {
                 storage.save(new Resume());
             }
         } catch (Exception e) {
@@ -57,6 +58,7 @@ public abstract class AbstractArrayStorageTest {
     @Test
     public void update() {
     }
+
     @Test(expected = NotExistStorageException.class)
     public void updateNotExists() {
         storage.get("dummy");
