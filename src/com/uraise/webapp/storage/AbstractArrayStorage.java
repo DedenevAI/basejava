@@ -16,7 +16,7 @@ public abstract class AbstractArrayStorage implements Storage {
         int index = getIndex(r.getUuid());
         if (storage.length == size) {
            throw new StorageException("ERROR: Storage overflow", r.getUuid()) ;
-        } else if (index > 0) {
+        } else if (index >= 0) {
             throw new ExistStorageException(r.getUuid());
         } else {
             saveResume(r, index);
@@ -38,7 +38,7 @@ public abstract class AbstractArrayStorage implements Storage {
     public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index < 0) {
-            System.out.println("ERROR: No item for delete");
+            throw new NotExistStorageException(uuid);
         } else {
             deleteResume(index);
             storage[size - 1] = null;
