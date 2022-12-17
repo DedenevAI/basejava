@@ -2,7 +2,6 @@ package com.uraise.webapp.storage;
 
 import com.uraise.webapp.exception.ExistStorageException;
 import com.uraise.webapp.exception.NotExistStorageException;
-import com.uraise.webapp.exception.StorageException;
 import com.uraise.webapp.model.Resume;
 import org.junit.Assert;
 import org.junit.Before;
@@ -45,19 +44,6 @@ public abstract class AbstractArrayStorageTest {
     @Test(expected = ExistStorageException.class)
     public void saveExist() {
         storage.save(RESUME_1);
-    }
-
-    @Test(expected = StorageException.class)
-    public void saveOverflow() {
-        storage.clear();
-        try {
-            for (int i = 0; i < STORAGE_LIMIT; i++) {
-                storage.save(new Resume());
-            }
-        } catch (Exception e) {
-            Assert.fail("Unexpected exception was thrown");
-        }
-        storage.save(new Resume());
     }
 
     @Test
@@ -122,5 +108,16 @@ public abstract class AbstractArrayStorageTest {
     private void assertGet(Resume resume) {
         Resume result = storage.get(resume.getUuid());
         Assert.assertEquals(resume, result);
+    }
+    protected void overFlow(){
+        storage.clear();
+        try {
+            for (int i = 0; i < STORAGE_LIMIT; i++) {
+                storage.save(new Resume());
+            }
+        } catch (Exception e) {
+            Assert.fail("Unexpected exception was thrown");
+        }
+        storage.save(new Resume());
     }
 }
