@@ -2,54 +2,54 @@ package com.uraise.webapp.storage;
 
 import com.uraise.webapp.model.Resume;
 
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class MapStorage extends AbstractStorage {
-    private final Map<String, Resume> map = new LinkedHashMap<String, Resume>;
+public class MapStorage extends AbstractStorage<String> {
+    private final Map<String, Resume> storage = new LinkedHashMap<String, Resume>();
 
     @Override
-    protected Integer getSearchKey(String uuid) {
+    protected String getSearchKey(String uuid) {
+        return uuid;
     }
 
     @Override
-    protected void updateResume(Object searchKey, Resume r) {
-
+    protected void updateResume(String searchKey, Resume r) {
+        storage.put(searchKey,r);
     }
 
     @Override
-    protected void doSave(Object searchKey, Resume r) {
-
+    protected void doSave(String searchKey, Resume r) {
+        storage.put(searchKey,r);
     }
 
     @Override
-    protected void doDelete(Object searchKey) {
-
+    protected void doDelete(String searchKey) {
+        storage.remove(searchKey);
     }
 
     @Override
-    protected Resume getResume(Object searchKey) {
-        return null;
+    protected Resume getResume(String searchKey) {
+        return storage.get(searchKey);
     }
 
     @Override
     public void clear() {
-
+        storage.clear();
     }
 
     @Override
     public Resume[] getAll() {
-        return new Resume[0];
+        return storage.values().toArray(new Resume[0]);
     }
 
     @Override
     public int size() {
-        return 0;
+       return storage.size();
     }
 
     @Override
-    protected boolean isExited(Object searchKey) {
-        return false;
+    protected boolean isExited(String searchKey) {
+        return storage.containsKey(searchKey);
     }
 }

@@ -2,6 +2,7 @@ package com.uraise.webapp.storage;
 
 import com.uraise.webapp.exception.ExistStorageException;
 import com.uraise.webapp.exception.NotExistStorageException;
+import com.uraise.webapp.exception.StorageException;
 import com.uraise.webapp.model.Resume;
 import org.junit.Assert;
 import org.junit.Before;
@@ -109,7 +110,8 @@ public abstract class AbstractArrayStorageTest {
         Resume result = storage.get(resume.getUuid());
         Assert.assertEquals(resume, result);
     }
-    protected void overFlow(){
+    @Test(expected = StorageException.class)
+    public void overFlow(){
         storage.clear();
         try {
             for (int i = 0; i < STORAGE_LIMIT; i++) {
