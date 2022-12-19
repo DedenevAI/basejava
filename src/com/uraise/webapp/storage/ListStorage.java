@@ -39,7 +39,7 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    protected boolean isExit(Object searchKey) {
+    protected boolean isExited(Object searchKey) {
         return searchKey != null;
     }
 

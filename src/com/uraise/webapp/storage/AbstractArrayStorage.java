@@ -16,7 +16,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     protected abstract void saveResume(Resume r, int index);
 
     @Override
-    protected boolean isExit(Object index) {
+    protected boolean isExited(Object index) {
         return (Integer) index >= 0;
     }
 
