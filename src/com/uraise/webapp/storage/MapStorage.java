@@ -2,11 +2,13 @@ package com.uraise.webapp.storage;
 
 import com.uraise.webapp.model.Resume;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MapStorage extends AbstractStorage<String> {
-    private final Map<String, Resume> storage = new LinkedHashMap<String, Resume>();
+    private final Map<String, Resume> storage = new LinkedHashMap<>();
 
     @Override
     protected String getSearchKey(String uuid) {
@@ -15,12 +17,12 @@ public class MapStorage extends AbstractStorage<String> {
 
     @Override
     protected void updateResume(String searchKey, Resume r) {
-        storage.put(searchKey,r);
+        storage.put(searchKey, r);
     }
 
     @Override
     protected void doSave(String searchKey, Resume r) {
-        storage.put(searchKey,r);
+        storage.put(searchKey, r);
     }
 
     @Override
@@ -34,18 +36,18 @@ public class MapStorage extends AbstractStorage<String> {
     }
 
     @Override
+    protected List<Resume> copyAll() {
+        return Arrays.asList(storage.values().toArray(new Resume[0]));
+    }
+
+    @Override
     public void clear() {
         storage.clear();
     }
 
     @Override
-    public Resume[] getAll() {
-        return storage.values().toArray(new Resume[0]);
-    }
-
-    @Override
     public int size() {
-       return storage.size();
+        return storage.size();
     }
 
     @Override

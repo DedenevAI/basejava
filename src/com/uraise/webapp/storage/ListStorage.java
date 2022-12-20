@@ -20,7 +20,7 @@ public class ListStorage extends AbstractStorage<Integer> {
 
     @Override
     protected void updateResume(Integer searchKey, Resume r) {
-        listStorage.set((Integer) searchKey, r);
+        listStorage.set(searchKey, r);
     }
 
     @Override
@@ -30,12 +30,12 @@ public class ListStorage extends AbstractStorage<Integer> {
 
     @Override
     protected void doDelete(Integer searchKey) {
-        listStorage.remove(((Integer) searchKey).intValue());
+        listStorage.remove(( searchKey).intValue());
     }
 
     @Override
     protected Resume getResume(Integer searchKey) {
-        return listStorage.get((Integer) searchKey);
+        return listStorage.get(searchKey);
     }
 
     @Override
@@ -49,8 +49,8 @@ public class ListStorage extends AbstractStorage<Integer> {
     }
 
     @Override
-    public Resume[] getAll() {
-        return listStorage.toArray(new Resume[0]);
+    public List<Resume> copyAll() {
+        return new ArrayList<>(listStorage);
     }
 
     @Override
