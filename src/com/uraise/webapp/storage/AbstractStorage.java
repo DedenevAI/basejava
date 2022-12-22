@@ -4,14 +4,15 @@ import com.uraise.webapp.exception.ExistStorageException;
 import com.uraise.webapp.exception.NotExistStorageException;
 import com.uraise.webapp.model.Resume;
 
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class AbstractStorage<SK> implements Storage {
     @Override
     public List<Resume> getAllSorted() {
+        Comparator<Resume> comparator = Comparator.comparing(Resume::getFullName).thenComparing(Resume::getUuid);
         List<Resume> list = copyAll();
-        Collections.sort(list);
+        list.sort(comparator);
         return list;
     }
 
