@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MapStorageUuid extends AbstractStorage<String> {
+public class MapUuidStorage extends AbstractStorage<String> {
     private final Map<String, Resume> storage = new LinkedHashMap<>();
 
     @Override
