@@ -3,20 +3,20 @@ package com.uraise.webapp;
 import com.uraise.webapp.model.SectionType;
 
 public class TestSingleton {
-    private static TestSingleton instance;
+    private static TestSingleton INSTANCE;
 
-    public static TestSingleton getInstance() {
-        if (instance == null){
-            instance = new TestSingleton();
+    public static TestSingleton getINSTANCE() {
+        if (INSTANCE == null){
+            INSTANCE = new TestSingleton();
         }
-        return instance;
+        return INSTANCE;
     }
 
     private TestSingleton() {
     }
 
     public static void main(String[] args) {
-        TestSingleton.getInstance().toString();
+        TestSingleton.getINSTANCE().toString();
         Singleton instance = Singleton.valueOf("INSTANCE");
         System.out.println(instance.ordinal());
         for (SectionType type : SectionType.values()){
