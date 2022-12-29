@@ -2,12 +2,12 @@ package com.uraise.webapp.model;
 
 import java.util.Objects;
 
-public class CompanyType {
+public class Company {
     private final String title;
     private final String description;
     private final double date;
 
-    public CompanyType(String title, String description, double date) {
+    public Company(String title, String description, double date) {
         this.title = title;
         this.description = description;
         this.date = date;
@@ -17,7 +17,7 @@ public class CompanyType {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CompanyType that = (CompanyType) o;
+        Company that = (Company) o;
         return Double.compare(that.date, date) == 0 && Objects.equals(title, that.title) && Objects.equals(description, that.description);
     }
 
@@ -28,7 +28,7 @@ public class CompanyType {
 
     @Override
     public String toString() {
-        return "CompanyType{" +
+        return "Company{" +
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", date=" + date +

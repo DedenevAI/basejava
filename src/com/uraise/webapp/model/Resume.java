@@ -12,7 +12,7 @@ public class Resume implements Comparable<Resume> {
     // Unique identifier
     private final String uuid;
     private final String fullName;
-    private final Map<SectionType, Section> sectionMap = new EnumMap<>(SectionType.class);
+    private final Map<SectionType, AbstractSection> sectionMap = new EnumMap<>(SectionType.class);
     private final Map<ContactType, String> contacMap = new EnumMap<>(ContactType.class);
 
     public Resume(String fullName) {
@@ -62,7 +62,7 @@ public class Resume implements Comparable<Resume> {
         return cmp != 0 ? cmp : uuid.compareTo(o.uuid);
     }
 
-    public Map<SectionType, Section> getSectionMap() {
+    public Map<SectionType, AbstractSection> getSectionMap() {
         return sectionMap;
     }
 

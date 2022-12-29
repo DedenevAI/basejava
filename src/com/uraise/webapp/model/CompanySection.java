@@ -3,14 +3,14 @@ package com.uraise.webapp.model;
 import java.util.List;
 import java.util.Objects;
 
-public class CompanySection extends Section {
-    private final List<CompanyType> content;
+public class CompanySection extends AbstractSection {
+    private final List<Company> content;
 
-    public CompanySection(List<CompanyType> content) {
+    public CompanySection(List<Company> content) {
         this.content = content;
     }
 
-    public List<CompanyType> getContent() {
+    public List<Company> getContent() {
         return content;
     }
 
@@ -29,7 +29,7 @@ public class CompanySection extends Section {
 
     @Override
     public String toString() {
-        return "CompanySection{" +
+        return "CompanyAbstaractSection{" +
                 "content=" + content +
                 '}';
     }
