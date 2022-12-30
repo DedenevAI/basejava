@@ -31,6 +31,13 @@ public class Resume implements Comparable<Resume> {
     public String getFullName() {
         return fullName;
     }
+    public Map<SectionType, AbstractSection> getSectionMap() {
+        return sectionMap;
+    }
+
+    public Map<ContactType, String> getContacMap() {
+        return contacMap;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -53,7 +60,7 @@ public class Resume implements Comparable<Resume> {
 
     @Override
     public String toString() {
-        return uuid;
+        return uuid + '(' + fullName + ')';
     }
 
     @Override
@@ -62,11 +69,5 @@ public class Resume implements Comparable<Resume> {
         return cmp != 0 ? cmp : uuid.compareTo(o.uuid);
     }
 
-    public Map<SectionType, AbstractSection> getSectionMap() {
-        return sectionMap;
-    }
 
-    public Map<ContactType, String> getContacMap() {
-        return contacMap;
-    }
 }
