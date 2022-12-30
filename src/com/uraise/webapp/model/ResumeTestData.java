@@ -14,9 +14,9 @@ public class ResumeTestData {
         contacMap.put(ContactType.SKYPE, "skype:grigory.kislin");
 
         Map<SectionType, AbstractSection> sectionMap = resume.getSectionMap();
-        sectionMap.put(SectionType.OBJECTIVE,new TextSection("Ведущий стажировок и корпоративного обучения " +
+        sectionMap.put(SectionType.OBJECTIVE, new TextSection("Ведущий стажировок и корпоративного обучения " +
                 "по Java Web и Enterprise технологиям"));
-        sectionMap.put(SectionType.PERSONAL,new TextSection("Аналитический склад ума, сильная логика, креативность, инициативность. " +
+        sectionMap.put(SectionType.PERSONAL, new TextSection("Аналитический склад ума, сильная логика, креативность, инициативность. " +
                 "Пурист кода и архитектуры."));
 
         List<String> achievemntContentList = new ArrayList<>();
@@ -28,31 +28,31 @@ public class ResumeTestData {
                 "\"Многомодульный maven. Многопоточность. XML (JAXB/StAX). " +
                 "Веб сервисы (JAX-RS/SOAP). Удаленное взаимодействие (JMS/AKKA)\". Организация онлайн стажировок и " +
                 "ведение проектов. Более 3500 выпускников.");
-        sectionMap.put(SectionType.ACHIEVEMENT,new ListSection(achievemntContentList));
+        sectionMap.put(SectionType.ACHIEVEMENT, new ListSection(achievemntContentList));
 
         List<String> qualificationsContentList = new ArrayList<>();
         qualificationsContentList.add("JEE AS: GlassFish (v2.1, v3), OC4J, JBoss, Tomcat, Jetty, WebLogic, WSO2");
         qualificationsContentList.add("Version control: Subversion, Git, Mercury, ClearCase, Perforce");
-        sectionMap.put(SectionType.QUALIFICATIONS,new ListSection(qualificationsContentList));
+        sectionMap.put(SectionType.QUALIFICATIONS, new ListSection(qualificationsContentList));
 
         List<Company> expCompanyList = new ArrayList<>();
-        expCompanyList.add(new Company("Java Online Projects","https://javaops.ru/","Автор проекта",
-                "Создание, организация и проведение Java онлайн проектов и стажировок.", LocalDate.of(2013,10,1),
+        expCompanyList.add(new Company("Java Online Projects", "https://javaops.ru/", "Автор проекта",
+                "Создание, организация и проведение Java онлайн проектов и стажировок.", LocalDate.of(2013, 10, 1),
                 null));
-        expCompanyList.add(new Company("Wrike","https://www.wrike.com/", "Старший разработчик (backend)",
+        expCompanyList.add(new Company("Wrike", "https://www.wrike.com/", "Старший разработчик (backend)",
                 "Проектирование и разработка онлайн платформы управления проектами Wrike (Java 8 API, Maven, Spring, " +
                         "MyBatis, Guava, Vaadin, PostgreSQL, Redis). Двухфакторная аутентификация, " +
                         "авторизация по OAuth1, OAuth2, JWT SSO.\n" +
-                        "RIT Center",LocalDate.of(2012,4,1), LocalDate.of(2014,10,1)));
+                        "RIT Center", LocalDate.of(2012, 4, 1), LocalDate.of(2014, 10, 1)));
         sectionMap.put(SectionType.EXPERIENCE, new CompanySection(expCompanyList));
 
         List<Company> eduCompanyList = new ArrayList<>();
-        expCompanyList.add(new Company("Coursera","https://www.coursera.org/course/progfun",
+        expCompanyList.add(new Company("Coursera", "https://www.coursera.org/course/progfun",
                 "'Functional Programming Principles in Scala' by Martin Odersky", null,
-                LocalDate.of(2013,3,1), LocalDate.of(2013,5,1)));
-        expCompanyList.add(new Company("Luxoft","https://www.coursera.org/course/progfun",
+                LocalDate.of(2013, 3, 1), LocalDate.of(2013, 5, 1)));
+        expCompanyList.add(new Company("Luxoft", "https://www.coursera.org/course/progfun",
                 "Курс 'Объектно-ориентированный анализ ИС. Концептуальное моделирование на UML.'", null,
-                LocalDate.of(2011,3,1), LocalDate.of(2011,4,1)));
+                LocalDate.of(2011, 3, 1), LocalDate.of(2011, 4, 1)));
         sectionMap.put(SectionType.EDUCATION, new CompanySection(eduCompanyList));
 
         System.out.println(resume);
