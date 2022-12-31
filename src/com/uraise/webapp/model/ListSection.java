@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class ListSection extends AbstractSection {
-    private final List<String> contentList;
+    private final List<String> content;
 
     public ListSection(List<String> contenList) {
-        this.contentList = contenList;
+        this.content = contenList;
     }
 
-    public List<String> getContentList() {
-        return contentList;
+    public List<String> getContent() {
+        return content;
     }
 
     @Override
@@ -19,18 +19,18 @@ public class ListSection extends AbstractSection {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ListSection that = (ListSection) o;
-        return Objects.equals(contentList, that.contentList);
+        return Objects.equals(content, that.content);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contentList);
+        return Objects.hash(content);
     }
 
     @Override
     public String toString() {
         return "ListAbstaractSection{" +
-                "contentList=" + contentList +
+                "content=" + content +
                 '}';
     }
 }

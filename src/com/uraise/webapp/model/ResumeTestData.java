@@ -36,23 +36,23 @@ public class ResumeTestData {
         sectionMap.put(SectionType.QUALIFICATIONS, new ListSection(qualificationsContentList));
 
         List<Company> expCompanyList = new ArrayList<>();
-        expCompanyList.add(new Company("Java Online Projects", "https://javaops.ru/", "Автор проекта",
-                "Создание, организация и проведение Java онлайн проектов и стажировок.", LocalDate.of(2013, 10, 1),
-                null));
-        expCompanyList.add(new Company("Wrike", "https://www.wrike.com/", "Старший разработчик (backend)",
-                "Проектирование и разработка онлайн платформы управления проектами Wrike (Java 8 API, Maven, Spring, " +
-                        "MyBatis, Guava, Vaadin, PostgreSQL, Redis). Двухфакторная аутентификация, " +
-                        "авторизация по OAuth1, OAuth2, JWT SSO.\n" +
-                        "RIT Center", LocalDate.of(2012, 4, 1), LocalDate.of(2014, 10, 1)));
+        expCompanyList.add(new Company(new Link("JavaOPS", "https://javaops.ru/"), new Period("Автор проекта.",
+                "Создание, организация и проведение Java онлайн проектов и стажировок.",
+                LocalDate.of(2013, 10, 1), null)));
+        expCompanyList.add(new Company(new Link("Wrike", "https://www.wrike.com/"), new Period("Старший разработчик (backend)",
+                "Проектирование и разработка онлайн платформы управления проектами Wrike (Java 8 API, Maven, Spring, MyBatis, " +
+                        "Guava, Vaadin, PostgreSQL, Redis). " +
+                        "Двухфакторная аутентификация, авторизация по OAuth1, OAuth2, JWT SSO.",
+                LocalDate.of(2014, 10, 1), LocalDate.of(2016, 1, 1))));
         sectionMap.put(SectionType.EXPERIENCE, new CompanySection(expCompanyList));
 
         List<Company> eduCompanyList = new ArrayList<>();
-        expCompanyList.add(new Company("Coursera", "https://www.coursera.org/course/progfun",
-                "'Functional Programming Principles in Scala' by Martin Odersky", null,
-                LocalDate.of(2013, 3, 1), LocalDate.of(2013, 5, 1)));
-        expCompanyList.add(new Company("Luxoft", "https://www.coursera.org/course/progfun",
-                "Курс 'Объектно-ориентированный анализ ИС. Концептуальное моделирование на UML.'", null,
-                LocalDate.of(2011, 3, 1), LocalDate.of(2011, 4, 1)));
+        expCompanyList.add(new Company(new Link("Coursera", "https://www.coursera.org/learn/scala-functional-programming"),
+                new Period("'Functional Programming Principles in Scala' by Martin Odersky",null,
+                        LocalDate.of(2013, 3, 1), LocalDate.of(2013, 5, 1))));
+        expCompanyList.add(new Company(new Link("Luxoft", "https://ibs-training.ru/kurs/obektno-orientirovannyy_analiz_i_proektirovanie_na_uml.html"),
+                new Period("Курс 'Объектно-ориентированный анализ ИС. Концептуальное моделирование на UML.'",null,
+                        LocalDate.of(2011, 3, 1), LocalDate.of(2011, 4, 1))));
         sectionMap.put(SectionType.EDUCATION, new CompanySection(eduCompanyList));
 
         System.out.println(resume);
