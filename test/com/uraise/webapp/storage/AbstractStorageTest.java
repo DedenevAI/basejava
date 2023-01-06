@@ -10,17 +10,19 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.uraise.webapp.model.ResumeTestData.createResume;
+
 public abstract class AbstractStorageTest {
     protected final Storage storage;
 
     protected static final String UUID_1 = "uuid1";
-    protected static final Resume RESUME_1 = new Resume(UUID_1, "fullName1");
+    protected static final Resume RESUME_1 = createResume(UUID_1, "fullName1");
     protected static final String UUID_2 = "uuid2";
-    protected static final Resume RESUME_2 = new Resume(UUID_2, "fullName2");
+    protected static final Resume RESUME_2 = createResume(UUID_2, "fullName2");
     protected static final String UUID_3 = "uuid3";
-    protected static final Resume RESUME_3 = new Resume(UUID_3, "fullName3");
+    protected static final Resume RESUME_3 = createResume(UUID_3, "fullName3");
     protected static final String UUID_4 = "uuid4";
-    protected static final Resume RESUME_4 = new Resume(UUID_4, "dummy_fullName");
+    protected static final Resume RESUME_4 =  createResume(UUID_4, "fullName4");
     protected static final String UUID_NOT_EXIST = "dummy";
 
     protected AbstractStorageTest(Storage storage) {
@@ -87,8 +89,8 @@ public abstract class AbstractStorageTest {
     @Test
     public void getAll() {
         List<Resume> getAll = storage.getAllSorted();
-        Assert.assertEquals(3,getAll.size());
-        Assert.assertEquals(getAll, Arrays.asList(RESUME_1,RESUME_2,RESUME_3));
+        Assert.assertEquals(3, getAll.size());
+        Assert.assertEquals(getAll, Arrays.asList(RESUME_1, RESUME_2, RESUME_3));
     }
 
     @Test
