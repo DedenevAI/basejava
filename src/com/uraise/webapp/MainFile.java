@@ -24,7 +24,6 @@ public class MainFile {
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
                 int count = dir.getNameCount() - mainDirectory.getNameCount() + 1;
                 count += dir.getFileName().toString().length();
-                //выравнивание по правому краю
                 String text = String.format("%" + count + "s", dir.getFileName());
                 text = text.replaceAll("\\s", "-");
                 System.out.println(text);
