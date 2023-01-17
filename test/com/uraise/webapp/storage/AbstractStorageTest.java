@@ -16,7 +16,7 @@ import static com.uraise.webapp.model.ResumeTestData.createResume;
 public abstract class AbstractStorageTest {
     protected static final String STORAGE_PATH = "C:\\Users\\Alex\\Desktop\\basejava1\\storage";
     protected static final File STORAGE_DIR = new File(STORAGE_PATH);
-    protected final Storage storage;
+    protected Storage storage;
 
     protected static final String UUID_1 = "uuid1";
     protected static final Resume RESUME_1 = createResume(UUID_1, "fullName1");
@@ -78,7 +78,7 @@ public abstract class AbstractStorageTest {
 
     @Test
     public void get() {
-        assertGet(new Resume(UUID_1, "fullName1"));
+        assertGet(createResume(UUID_1, "fullName1"));
         assertGet(RESUME_1);
         assertGet(RESUME_2);
         assertGet(RESUME_3);
