@@ -5,7 +5,10 @@ import java.util.Objects;
 
 public class CompanySection extends AbstractSection {
     private static final long serialVersionUID = 1L;
-    private final List<Company> content;
+    private List<Company> content;
+
+    public CompanySection() {
+    }
 
     public CompanySection(List<Company> content) {
         this.content = content;
