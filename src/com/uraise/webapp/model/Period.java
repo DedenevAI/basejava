@@ -7,7 +7,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.Objects;
+
+import static com.uraise.webapp.util.DataUtil.of;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Period implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -23,9 +27,12 @@ public class Period implements Serializable {
 
     public Period(String title, String description, LocalDate startDate, LocalDate endDate) {
         this.title = title;
-        this.description = description;
+        this.description = description == null ? "" : description;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+    public Period(String title, String description,int startYear, Month startMonth, int endYear, Month endMonth) {
+        this(title, description, of(startYear, startMonth), of(endYear, endMonth));
     }
 
     public String getTitle() {
