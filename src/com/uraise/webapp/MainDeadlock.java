@@ -8,18 +8,17 @@ public class MainDeadlock implements Runnable {
     private final Resource resource2 = new Resource();
 
     public void stepOne() {
-        synchronized (resource1) {
-            System.out.println(Thread.currentThread().getName() + "resource1 is using now...");
-            synchronized (resource2) {
-                System.out.println(Thread.currentThread().getName() + "resource2 is using now...");
-            }
-        }
+        synRes(resource1, resource2);
     }
 
     public void stepTwo() {
-        synchronized (resource2) {
+        synRes(resource2, resource1);
+    }
+
+    public void synRes(Resource firstResource, Resource secondResource) {
+        synchronized (firstResource) {
             System.out.println(Thread.currentThread().getName() + "resource1 is using now...");
-            synchronized (resource1) {
+            synchronized (secondResource) {
                 System.out.println(Thread.currentThread().getName() + "resource2 is using now...");
             }
         }

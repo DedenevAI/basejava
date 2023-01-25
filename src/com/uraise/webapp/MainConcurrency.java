@@ -1,38 +1,44 @@
 package com.uraise.webapp;
 
+import java.util.concurrent.*;
+
 public class MainConcurrency {
     private static int counter;
+    private static final int THREADS_NUMBER = 10000;
     private static final Object LOCK = new Object();
 
-    public static void main(String[] args) throws InterruptedException {
-
-
-        System.out.println(Thread.currentThread().getName());
-        Thread thread0 = new Thread() {
-            @Override
-            public void run() {
-                System.out.println(getName() + " " + getState());
-            }
-        };
-        thread0.start();
-        new Thread(() -> {
-            System.out.println(Thread.currentThread().getName() + ", " + Thread.currentThread().getState());
-        }).start();
-        System.out.println(thread0.getState());
-
-        for (int i = 0; i < 10000; i++) {
-            new Thread(() -> {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        CountDownLatch latch = new CountDownLatch(THREADS_NUMBER);
+        CompletionService completionService = new ExecutorCompletionService(executorService);
+        for (int i = 0; i < THREADS_NUMBER; i++) {
+            Future<Integer> future = executorService.submit(() -> {
                 for (int j = 0; j < 100; j++) {
                     inc();
                 }
-            }).start();
+                latch.countDown();
+                return counter;
+            });
+            completionService.poll();
+            System.out.println(future.isDone());
+            System.out.println(future.get());
         }
-        Thread.sleep(500);
+
+
+//        {
+//            new Thread(() -> {
+//                for (int j = 0; j < 100; j++) {
+//                    inc();
+//                }
+//            }).start();
+//        }
+        latch.await();
+        executorService.shutdown();
         System.out.println(counter);
     }
-    private static void inc(){
-        double a = Math.sin(13);
-        synchronized (LOCK){
+
+    private static void inc() {
+        synchronized (LOCK) {
             counter++;
         }
     }
