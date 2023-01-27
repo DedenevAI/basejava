@@ -29,16 +29,13 @@ public class MainStream {
         return Arrays.stream(values)
                 .sorted()
                 .distinct()
-                .reduce((x, y) -> ((x * 10) + y)).getAsInt();
+                .reduce(0,(x, y) -> ((x * 10) + y));
     }
 
     public static List<Integer> oddOrEven(List<Integer> integers) {
-        double sum = createStream(integers).reduce(0, Integer::sum);
-        if (sum % 2 == 0) {
-             return createStream(integers).filter((i) -> i % 2 != 0).collect(Collectors.toList());
-        } else {
-            return createStream(integers).filter((i) -> i % 2 == 0).collect(Collectors.toList());
-        }
+        double sum = createStream(integers).reduce(0, Integer::sum) % 2;
+        return sum == 0 ? createStream(integers).filter((i) -> i % 2 != 0).collect(Collectors.toList()) :
+                createStream(integers).filter((i) -> i % 2 == 0).collect(Collectors.toList());
     }
     public static Stream<Integer> createStream(List<Integer> list){
         return list.stream();
