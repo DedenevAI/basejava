@@ -6,6 +6,7 @@ import com.uraise.webapp.model.Resume;
 import com.uraise.webapp.sql.ConnectionFactory;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SqlStorage implements Storage {
@@ -86,6 +87,12 @@ public class SqlStorage implements Storage {
     public List<Resume> getAllSorted() {
         try (Connection conn = connectionFactory.getConnection();
              PreparedStatement ps = conn.prepareStatement("SELECT * FROM resume ORDER BY uuid")) {
+            ResultSet rs = ps.executeQuery();
+            List<Resume> resumes = new ArrayList<>();
+            while (rs.next()) {
+                resumes.add(new Resume(rs.getString(1), rs.getString(2)));
+            }
+            return resumes;
         } catch (SQLException e) {
             throw new StorageException(e);
         }
@@ -96,7 +103,8 @@ public class SqlStorage implements Storage {
         try (Connection conn = connectionFactory.getConnection();
              PreparedStatement ps = conn.prepareStatement("SELECT count(uuid) FROM resume GROUP BY uuid")) {
             ResultSet rs = ps.executeQuery();
-            return rs.getInt(1);
+            rs.last();
+            return rs.getRow();
         } catch (SQLException e) {
             throw new StorageException(e);
         }
