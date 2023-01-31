@@ -2,6 +2,7 @@ package com.uraise.webapp.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -11,8 +12,12 @@ public class CompanySection extends AbstractSection {
 
     public CompanySection() {
     }
+    public CompanySection(Company... company) {
+        this(Arrays.asList(company));
+    }
 
     public CompanySection(List<Company> content) {
+        Objects.requireNonNull(content, "content must not be null");
         this.content = content;
     }
 

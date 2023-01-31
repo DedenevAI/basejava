@@ -11,6 +11,7 @@ import org.junit.Test;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import static com.uraise.webapp.model.ResumeTestData.createResume;
 
@@ -18,15 +19,15 @@ public abstract class AbstractStorageTest {
     protected static final File STORAGE_DIR = Config.get().getStorageDir();
     protected Storage storage;
 
-    protected static final String UUID_1 = "uuid1";
+    protected static final String UUID_1 = UUID.randomUUID().toString();
     protected static final Resume RESUME_1 = createResume(UUID_1, "fullName1");
-    protected static final String UUID_2 = "uuid2";
+    protected static final String UUID_2 = UUID.randomUUID().toString();
     protected static final Resume RESUME_2 = createResume(UUID_2, "fullName2");
-    protected static final String UUID_3 = "uuid3";
+    protected static final String UUID_3 = UUID.randomUUID().toString();
     protected static final Resume RESUME_3 = createResume(UUID_3, "fullName3");
-    protected static final String UUID_4 = "uuid4";
+    protected static final String UUID_4 = UUID.randomUUID().toString();
     protected static final Resume RESUME_4 = createResume(UUID_4, "fullName4");
-    protected static final String UUID_NOT_EXIST = "dummy";
+    protected static final String UUID_NOT_EXIST = UUID.randomUUID().toString();
 
     protected AbstractStorageTest(Storage storage) {
         this.storage = storage;
@@ -36,9 +37,9 @@ public abstract class AbstractStorageTest {
     @Before
     public void setUp() {
         storage.clear();
-        storage.save(RESUME_1);
-        storage.save(RESUME_2);
-        storage.save(RESUME_3);
+        storage.save(createResume(UUID_1, "fullName1"));
+        storage.save(createResume(UUID_2, "fullName2"));
+        storage.save(createResume(UUID_3, "fullName3"));
     }
 
     @Test
@@ -93,9 +94,7 @@ public abstract class AbstractStorageTest {
     public void getAll() {
         List<Resume> getAll = storage.getAllSorted();
         Assert.assertEquals(3, getAll.size());
-        Assert.assertEquals(getAll, Arrays.asList(createResume(RESUME_1.getUuid(), RESUME_1.getFullName()),
-                createResume(RESUME_2.getUuid(), RESUME_2.getFullName()),
-                createResume(RESUME_3.getUuid(), RESUME_3.getFullName())));
+        Assert.assertEquals(getAll, Arrays.asList(RESUME_1,RESUME_2,RESUME_3));
     }
 
     @Test
@@ -114,7 +113,7 @@ public abstract class AbstractStorageTest {
     }
 
     private void assertGet(Resume resume) {
-        Resume result = createResume(resume.getUuid(),resume.getFullName());
+        Resume result = createResume(resume.getUuid(), resume.getFullName());
         Assert.assertEquals(resume, result);
     }
 }
