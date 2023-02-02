@@ -11,11 +11,11 @@ public class ResumeTestData {
     public static Resume createResume(String uuid, String fullName) {
         final String dummy = "dummy";
         Resume resume = new Resume(uuid, fullName);
-//
-//        Map<ContactType, String> contacMap = resume.getContacMap();
-//        contacMap.put(ContactType.TELEPHONE_NUMBER, dummy);
-//        contacMap.put(ContactType.SKYPE, dummy);
-//
+
+
+        resume.addContact(ContactType.TELEPHONE_NUMBER, dummy);
+        resume.addContact(ContactType.SKYPE, dummy);
+
 //        Map<SectionType, AbstractSection> sectionMap = resume.getSectionMap();
 //        sectionMap.put(SectionType.OBJECTIVE, new TextSection(dummy));
 //        sectionMap.put(SectionType.PERSONAL, new TextSection(dummy));
@@ -36,7 +36,7 @@ public class ResumeTestData {
 //        resume.addSection(SectionType.EDUCATION, new CompanySection(
 //                new Company(new Link(dummy, dummy), new Period(dummy, dummy, 2002, Month.JANUARY, 2003, Month.JANUARY)),
 //                new Company(new Link(dummy, dummy), new Period(dummy, dummy, 2002, Month.JANUARY, 2003, Month.JANUARY))));
-
+//
         return resume;
     }
 }

@@ -9,9 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static com.uraise.webapp.model.ResumeTestData.createResume;
 
@@ -94,7 +92,9 @@ public abstract class AbstractStorageTest {
     public void getAll() {
         List<Resume> getAll = storage.getAllSorted();
         Assert.assertEquals(3, getAll.size());
-        Assert.assertEquals(getAll, Arrays.asList(RESUME_1,RESUME_2,RESUME_3));
+        List<Resume> sortedResumes = Arrays.asList(RESUME_1,RESUME_2,RESUME_3);
+        Collections.sort(sortedResumes);
+        Assert.assertEquals(sortedResumes, getAll);
     }
 
     @Test
