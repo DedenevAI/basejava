@@ -25,9 +25,19 @@ create table public.contact
             on delete cascade
 );
 
+create table public.section
+(
+    id          SERIAL PRIMARY KEY,
+    resume_uuid CHAR(36) NOT NULL REFERENCES resume (uuid) ON DELETE CASCADE,
+    type        TEXT     NOT NULL,
+    content     TEXT     NOT NULL
+);
+
 alter table public.contact
     owner to postgres;
 
 create unique index contact__uuid_type_index
     on contact (resume_uuid, type);
+
+create unique index section_idx ON section (resume_uuid, type);
 

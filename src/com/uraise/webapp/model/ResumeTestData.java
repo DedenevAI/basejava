@@ -1,5 +1,8 @@
 package com.uraise.webapp.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ResumeTestData {
     public static void main(String[] args) {
         Resume resume = createResume("uuid1", "Ivan Ivanov");
@@ -15,6 +18,11 @@ public class ResumeTestData {
 
         resume.addContact(ContactType.TELEPHONE_NUMBER, dummy);
         resume.addContact(ContactType.SKYPE, dummy);
+
+        resume.addSection(SectionType.OBJECTIVE, new TextSection(dummy));
+        List<String> achievemntContentList = new ArrayList<>();
+        achievemntContentList.add(dummy);
+        resume.addSection(SectionType.EXPERIENCE, new ListSection(achievemntContentList));
 
 //        Map<SectionType, AbstractSection> sectionMap = resume.getSectionMap();
 //        sectionMap.put(SectionType.OBJECTIVE, new TextSection(dummy));
