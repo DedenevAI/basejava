@@ -30,6 +30,14 @@ public class Resume implements Comparable<Resume>, Serializable {
         this(UUID.randomUUID().toString(), fullName);
     }
 
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public Resume(String uuid, String fullName) {
         this.uuid = uuid;
         this.fullName = fullName;

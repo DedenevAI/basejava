@@ -17,7 +17,7 @@ public class ResumeTestData {
 
 
         resume.addContact(ContactType.TELEPHONE_NUMBER, dummy);
-        resume.addContact(ContactType.SKYPE, dummy);
+        resume.addContact(ContactType.EMAIL, dummy);
 
         resume.addSection(SectionType.OBJECTIVE, new TextSection(dummy));
         List<String> achievemntContentList = new ArrayList<>();
